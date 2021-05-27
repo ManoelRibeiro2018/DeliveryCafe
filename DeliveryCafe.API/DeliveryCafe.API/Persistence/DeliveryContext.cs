@@ -1,4 +1,5 @@
-﻿using DeliveryCafe.Models;
+﻿using DeliveryCafe.API.Models;
+using DeliveryCafe.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace DeliveryCafe.API.Persistence
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
 
     }
 }
