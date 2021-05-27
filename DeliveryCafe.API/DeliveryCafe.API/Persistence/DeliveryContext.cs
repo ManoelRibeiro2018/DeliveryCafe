@@ -20,5 +20,29 @@ namespace DeliveryCafe.API.Persistence
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Usuario
+            modelBuilder.Entity<Usuario>()
+                .HasMany(u => u.Pedidos)
+                .WithOne(p => p.Usuario);
+
+            //Endereço
+            modelBuilder.Entity<Endereco>()
+                .HasOne(e => e.Usuario)
+                .WithMany(u => u.Enderecos);
+
+            //Pedido
+            modelBuilder.Entity<Pedido>()
+                .HasMany(p => p.Produtos)
+                .WithMany(p => p.Pedidos);
+
+            //Produto
+            modelBuilder.Entity<Produto>()
+                .HasMany(p => p.Pedidos)
+                .WithMany(p => p.Produtos);
+
+        }
+
     }
 }

@@ -15,8 +15,7 @@ namespace DeliveryCafe.API.Models
         public decimal Preco { get; set; }
         [Required]
         public int Qtd { get; set; }
-        public int? IdPedido { get; set; }
-        public Pedido? Pedido { get; set; }
+        public List<Pedido>? Pedidos { get; set; }
 
     }
 }
