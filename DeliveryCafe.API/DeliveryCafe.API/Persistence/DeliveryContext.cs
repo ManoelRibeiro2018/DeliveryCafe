@@ -37,10 +37,18 @@ namespace DeliveryCafe.API.Persistence
                 .HasMany(p => p.Produtos)
                 .WithMany(p => p.Pedidos);
 
+            modelBuilder.Entity<Pedido>()
+                .Property(p => p.Total)
+                .HasColumnType("decimal");
+
             //Produto
             modelBuilder.Entity<Produto>()
                 .HasMany(p => p.Pedidos)
                 .WithMany(p => p.Produtos);
+
+            modelBuilder.Entity<Produto>()
+               .Property(p => p.Preco)
+               .HasColumnType("decimal");
 
         }
 

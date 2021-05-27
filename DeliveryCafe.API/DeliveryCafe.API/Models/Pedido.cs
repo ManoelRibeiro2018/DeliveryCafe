@@ -15,6 +15,7 @@ namespace DeliveryCafe.API.Models
         [Required]
         public decimal Total { get; set; }        
         public string Descricao { get; set; }
+        public DateTime DataPedido { get; set; }
         [Required]
         public List<Produto> Produtos { get; set; }
         [Required]
