@@ -1,4 +1,5 @@
 using DeliveryCafe.API.Persistence;
+using DeliveryCafe.API.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,7 @@ namespace DeliveryCafe.API
         {
 
             services.AddControllers();
+            services.AddScoped<IUsuarioInterface, UsuarioRepository>();
             services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
             services.AddSwaggerGen(c =>
             {

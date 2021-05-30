@@ -18,8 +18,9 @@ namespace DeliveryCafe.Models
         public string Email { get; set; }
         [Required, MinLength(4)] 
         public string Senha { get; set; }
+
         [Required, MinLength(4)]
-        public string ConfirmaSenha { get; set; }
+        public string? ConfirmaSenha { get; set; }
         public List<Endereco>? Enderecos{ get; set; }
         public List<Pedido>? Pedidos { get; set; }
     }
