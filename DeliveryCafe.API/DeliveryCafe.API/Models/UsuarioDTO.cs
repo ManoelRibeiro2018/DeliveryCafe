@@ -1,14 +1,12 @@
-﻿using DeliveryCafe.API.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DeliveryCafe.Models
+namespace DeliveryCafe.API.Models
 {
-    public class Usuario
+    public class UsuarioDTO
     {
         public int Id { get; set; }
         [Required, MaxLength(100), MinLength(4)]
@@ -17,12 +15,10 @@ namespace DeliveryCafe.Models
         public string Cpf { get; set; }
         [Required, EmailAddress]
         public string Email { get; set; }
-        [Required, MinLength(4)] 
+        [Required, MinLength(4)]
         public string Senha { get; set; }
 
-        [NotMapped]
-        public string? ConfirmaSenha { get; set; }
-        public List<Endereco>? Enderecos{ get; set; }
-        public List<Pedido>? Pedidos { get; set; }
+        [Required, MinLength(4)]
+        public string ConfirmaSenha { get; set; }
     }
 }

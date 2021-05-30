@@ -58,20 +58,17 @@ namespace DeliveryCafe.API.Repository
         {
             IQueryable<Usuario> usuarios = _deliveryContext.Usuarios
                 .Include(u => u.Pedidos);
-            return  usuarios.ToList();
+            return usuarios.ToList();
         }
 
-        public  Usuario GetById(int id)
+        public Usuario GetById(int id)
         {
-            IQueryable<Usuario> usuario = _deliveryContext.Usuarios
-                .Include(u => u.Pedidos);
-
-            return  usuario.SingleOrDefault();
+            return _deliveryContext.Usuarios.SingleOrDefault(u => u.Id == id);
         }
 
-        public  bool CheckDuplicityCpf(string cpf)
-        {      
-            var usuario =   _deliveryContext.Usuarios.SingleOrDefault(u => u.Cpf == cpf);
+        public bool CheckDuplicityCpf(string cpf)
+        {
+            var usuario = _deliveryContext.Usuarios.SingleOrDefault(u => u.Cpf == cpf);
             return usuario != null;
         }
     }

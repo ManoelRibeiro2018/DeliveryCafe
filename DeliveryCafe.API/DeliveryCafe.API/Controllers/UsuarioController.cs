@@ -1,4 +1,6 @@
-﻿using DeliveryCafe.Models;
+﻿using DeliveryCafe.API.Interface.DTO;
+using DeliveryCafe.API.Models;
+using DeliveryCafe.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,8 +12,8 @@ namespace DeliveryCafe.API.Controllers
     [Route("api/usuarios")]
     public class UsuarioController : Controller
     {
-        private readonly IUsuarioInterface _context;
-        public UsuarioController(IUsuarioInterface context)
+        private readonly IUsuarioDTOInterface _context;
+        public UsuarioController(IUsuarioDTOInterface context)
         {
             _context = context;
         }
@@ -35,18 +37,18 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Insert([FromBody] Usuario model)
+        public IActionResult Insert([FromBody] UsuarioDTO model)
         {
             var usuario = _context.Insert(model);
-            if (usuario != null)
+            if (usuario == null)
             {
                 return NoContent();
             }
 
             return CreatedAtAction(
                 nameof(GetById),
-                new { model.Id },
-                model);
+                new { usuario.Id },
+                usuario);
         }
 
         [HttpDelete("{id}")]
@@ -61,7 +63,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Usuario model)
+        public IActionResult Update(int id, [FromBody] UsuarioDTO model)
         {
             var usuario = _context.Update(id, model);
             if (!usuario)

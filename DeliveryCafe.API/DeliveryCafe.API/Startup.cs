@@ -1,5 +1,7 @@
+using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Persistence;
 using DeliveryCafe.API.Repository;
+using DeliveryCafe.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace DeliveryCafe.API
 {
@@ -25,7 +28,9 @@ namespace DeliveryCafe.API
 
             services.AddControllers();
             services.AddScoped<IUsuarioInterface, UsuarioRepository>();
+            services.AddScoped<IUsuarioDTOInterface, UsuarioService>();
             services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DeliveryCafe.API", Version = "v1" });
