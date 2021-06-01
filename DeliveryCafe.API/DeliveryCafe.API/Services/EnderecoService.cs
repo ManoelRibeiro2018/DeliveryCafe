@@ -48,5 +48,21 @@ namespace DeliveryCafe.API.Services
             }
             return _enderecoContext.Delete(id);
         }
+
+        public EnderecoDTO GetById(int id)
+        {
+            if (id == 0)
+            {
+                return null;
+            }
+            var endereco = _enderecoContext.GetById(id);
+            return _mapper.Map<EnderecoDTO>(endereco);            
+        }
+
+        public List<EnderecoDTO> GetAll()
+        {
+            var enderecos = _enderecoContext.GetAll();
+            return _mapper.Map<List<EnderecoDTO>>(enderecos);
+        }
     }
 }

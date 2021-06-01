@@ -18,6 +18,28 @@ namespace DeliveryCafe.API.Controllers
             _enderecoDTOInterface = enderecoDTOInterface;
         }
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var enderecos = _enderecoDTOInterface.GetAll();
+            if (enderecos == null)
+            {
+                return NoContent();
+            }
+            return Ok(enderecos);
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var endereco = _enderecoDTOInterface.GetById(id);
+            if (endereco == null)
+            {
+                return NoContent();
+            }
+            return Ok(endereco);
+        }
+
+
         [HttpPost]
         public IActionResult Insert([FromBody] EnderecoDTO model)
         {
@@ -44,7 +66,6 @@ namespace DeliveryCafe.API.Controllers
             {
                 return BadRequest();
             }
-
             return Ok();
         }
     }

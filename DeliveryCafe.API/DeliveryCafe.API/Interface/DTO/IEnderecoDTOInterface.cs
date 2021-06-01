@@ -11,5 +11,7 @@ namespace DeliveryCafe.API.Interface.DTO
         EnderecoDTO Insert(EnderecoDTO model);
         bool Update(int id, EnderecoDTO model);
         bool Delete(int id);
+        EnderecoDTO GetById(int id);
+        List<EnderecoDTO> GetAll();
     }
 }

@@ -60,5 +60,16 @@ namespace DeliveryCafe.API.Repository
             return false;
         }
 
+        public Endereco GetById(int id)
+        {
+            var endereco = _context.Enderecos.SingleOrDefault(e => e.Id == id);
+            return endereco;
+        }
+
+        public List<Endereco> GetAll()
+        {
+            var usuarios = _context.Enderecos.ToList();
+            return usuarios;
+        }
     }
 }
