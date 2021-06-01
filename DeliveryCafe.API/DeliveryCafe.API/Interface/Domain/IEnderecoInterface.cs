@@ -13,6 +13,6 @@ namespace DeliveryCafe.API.Interface.Domain
         bool Delete(int id);
         Endereco GetById(int id);
         List<Endereco> GetAll();
-        bool CheckDuplicityAddress(string cep);
+        bool CheckDuplicityAddress(int idUsuario, string cep);
     }
 }

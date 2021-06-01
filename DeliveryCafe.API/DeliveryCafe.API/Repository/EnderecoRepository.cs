@@ -18,7 +18,7 @@ namespace DeliveryCafe.API.Repository
        
         public Endereco Insert(Endereco model)
         {
-            if (CheckDuplicityAddress(model.CEP))
+            if (CheckDuplicityAddress(model.IdUsuario,model.CEP))
             {
                 return null;
             }
@@ -50,16 +50,6 @@ namespace DeliveryCafe.API.Repository
             _context.SaveChanges();
             return true;
         }
-        public bool CheckDuplicityAddress(string cep)
-        {
-            var endereco = _context.Enderecos.SingleOrDefault(e => e.CEP == cep);
-            if (endereco == null)
-            {
-                return false;
-            }
-            return false;
-        }
-
         public Endereco GetById(int id)
         {
             var endereco = _context.Enderecos.SingleOrDefault(e => e.Id == id);
@@ -71,5 +61,16 @@ namespace DeliveryCafe.API.Repository
             var usuarios = _context.Enderecos.ToList();
             return usuarios;
         }
+        public bool CheckDuplicityAddress(int idUsuario, string cep)
+        {
+            var endereco = _context.Enderecos.SingleOrDefault(e => e.IdUsuario == idUsuario && e.CEP == cep);
+            if (endereco == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+      
     }
 }
