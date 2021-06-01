@@ -23,7 +23,6 @@ namespace DeliveryCafe.API.Repository
             {
                 return null;
             }
-
             _deliveryContext.Usuarios.Add(model);
             _deliveryContext.SaveChanges();
             return model;

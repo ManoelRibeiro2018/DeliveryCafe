@@ -13,6 +13,7 @@ namespace DeliveryCafe.API.Helpers
         public DelivelyProfile()
         {
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
+            CreateMap<Endereco, EnderecoDTO>().ReverseMap();
         }
     }
 }
