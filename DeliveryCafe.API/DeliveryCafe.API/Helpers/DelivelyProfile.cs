@@ -14,6 +14,7 @@ namespace DeliveryCafe.API.Helpers
         {
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
             CreateMap<Endereco, EnderecoDTO>().ReverseMap();
+            CreateMap<Produto, ProdutoDTO>().ReverseMap();
         }
     }
 }

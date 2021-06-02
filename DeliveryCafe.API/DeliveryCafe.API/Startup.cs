@@ -30,8 +30,10 @@ namespace DeliveryCafe.API
             services.AddControllers();
             services.AddScoped<IUsuarioInterface, UsuarioRepository>();
             services.AddScoped<IEnderecoInterface, EnderecoRepository>();
+            services.AddScoped<IProdutoInterface, ProdutoRepository>();
             services.AddScoped<IUsuarioDTOInterface, UsuarioService>();
             services.AddScoped<IEnderecoDTOInterface, EnderecoService>();
+            services.AddScoped<IProdutoDTOInterface, ProdutoService>();
             services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
