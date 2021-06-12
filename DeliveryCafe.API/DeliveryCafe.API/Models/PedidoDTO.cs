@@ -1,21 +1,17 @@
-﻿using DeliveryCafe.Models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace DeliveryCafe.API.Models
 {
-    public class Pedido
+    public class PedidoDTO
     {
         public int Id { get; set; }
-        [Required]
-        public decimal Total { get; set; }        
         public string Descricao { get; set; }
         public DateTime DataPedido { get; set; }
-        public int IdCompra { get; set; }
-        public CarrinhoCompra CarrinhoCompra  { get; set; }
-
+        [Required]
+        public int IdProduto { get; set; }
         [Required]
         public int IdUsuario { get; set; }
-        public Usuario Usuario { get; set; }
     }
 }
+

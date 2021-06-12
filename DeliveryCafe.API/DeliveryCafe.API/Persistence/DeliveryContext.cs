@@ -19,6 +19,7 @@ namespace DeliveryCafe.API.Persistence
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<CarrinhoCompra> CarrinhoCompras { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,8 +35,8 @@ namespace DeliveryCafe.API.Persistence
 
             //Pedido
             modelBuilder.Entity<Pedido>()
-                .HasMany(p => p.Produtos)
-                .WithMany(p => p.Pedidos);
+                .HasOne(p => p.CarrinhoCompra)
+                .WithMany(c => c.Pedidos);
 
             modelBuilder.Entity<Pedido>()
                 .Property(p => p.Total)
@@ -43,8 +44,8 @@ namespace DeliveryCafe.API.Persistence
 
             //Produto
             modelBuilder.Entity<Produto>()
-                .HasMany(p => p.Pedidos)
-                .WithMany(p => p.Produtos);
+                .HasOne(p => p.Compra)
+                .WithMany(c => c.Produtos);
 
             modelBuilder.Entity<Produto>()
                .Property(p => p.Preco)

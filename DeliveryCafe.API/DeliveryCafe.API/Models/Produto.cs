@@ -15,7 +15,8 @@ namespace DeliveryCafe.API.Models
         public decimal Preco { get; set; }
         [Required]
         public int Qtd { get; set; }
-        public List<Pedido>? Pedidos { get; set; }
+        public int IdCompra { get; set; }
+        public CarrinhoCompra Compra { get; set; }
         public void Update(string nome, decimal preco, int qtd)
         {
             Nome = nome;

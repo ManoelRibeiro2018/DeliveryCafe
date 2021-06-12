@@ -31,6 +31,7 @@ namespace DeliveryCafe.API
             services.AddScoped<IUsuarioInterface, UsuarioRepository>();
             services.AddScoped<IEnderecoInterface, EnderecoRepository>();
             services.AddScoped<IProdutoInterface, ProdutoRepository>();
+            services.AddScoped<IPedidoInterface, PedidoRepository>();
             services.AddScoped<IUsuarioDTOInterface, UsuarioService>();
             services.AddScoped<IEnderecoDTOInterface, EnderecoService>();
             services.AddScoped<IProdutoDTOInterface, ProdutoService>();

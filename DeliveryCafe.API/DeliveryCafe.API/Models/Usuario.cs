@@ -21,8 +21,8 @@ namespace DeliveryCafe.Models
         public string Senha { get; set; }
 
         [NotMapped]
-        public string? ConfirmaSenha { get; set; }
-        public List<Endereco>? Enderecos{ get; set; }
-        public List<Pedido>? Pedidos { get; set; }
+        public string ConfirmaSenha { get; set; }
+        public List<Endereco> Enderecos{ get; set; }
+        public List<Pedido> Pedidos { get; set; }
     }
 }
