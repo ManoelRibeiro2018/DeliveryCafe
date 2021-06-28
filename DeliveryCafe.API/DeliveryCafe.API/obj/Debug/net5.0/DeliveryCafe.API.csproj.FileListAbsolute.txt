@@ -60,4 +60,3 @@ C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\obj\Debug\net5.0\DeliveryCafe.API.genruntimeconfig.cache
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\obj\Debug\net5.0\DeliveryCafe.API.csprojAssemblyReference.cache

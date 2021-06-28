@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Repository
 {
-    public class EnderecoRepository : IEnderecoInterface
+    public class EnderecoRepository : IEnderecoInterface, IRepositoryGenerics<Endereco>
     {
         private readonly DeliveryContext _context;
         public EnderecoRepository(DeliveryContext context)
@@ -18,7 +18,7 @@ namespace DeliveryCafe.API.Repository
        
         public Endereco Insert(Endereco model)
         {
-            if (CheckDuplicityAddress(model.IdUsuario,model.CEP))
+            if (CheckDuplicity(model))
             {
                 return null;
             }
@@ -61,9 +61,13 @@ namespace DeliveryCafe.API.Repository
             var usuarios = _context.Enderecos.ToList();
             return usuarios;
         }
-        public bool CheckDuplicityAddress(int idUsuario, string cep)
+   
+
+
+
+        public bool CheckDuplicity(Endereco value)
         {
-            var endereco = _context.Enderecos.SingleOrDefault(e => e.IdUsuario == idUsuario && e.CEP == cep);
+            var endereco = _context.Enderecos.SingleOrDefault(e => e.IdUsuario == value.Id && e.CEP == value.CEP);
             if (endereco == null)
             {
                 return false;
@@ -71,6 +75,5 @@ namespace DeliveryCafe.API.Repository
             return true;
         }
 
-      
     }
 }
