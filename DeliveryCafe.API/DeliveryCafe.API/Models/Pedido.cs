@@ -1,5 +1,6 @@
 ﻿using DeliveryCafe.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DeliveryCafe.API.Models
@@ -11,8 +12,7 @@ namespace DeliveryCafe.API.Models
         public decimal Total { get; set; }        
         public string Descricao { get; set; }
         public DateTime DataPedido { get; set; }
-        public int IdCompra { get; set; }
-        public CarrinhoCompra CarrinhoCompra  { get; set; }
+        public List<CarrinhoCompra> CarrinhoCompras  { get; set; }
 
         [Required]
         public int IdUsuario { get; set; }

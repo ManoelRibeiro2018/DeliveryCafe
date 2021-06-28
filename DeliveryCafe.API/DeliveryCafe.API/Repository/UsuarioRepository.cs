@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Repository
 {
-    public class UsuarioRepository : IUsuarioInterface
+    public class UsuarioRepository : IUsuarioInterface, IRepositoryGenerics<String>
     {
         private readonly DeliveryContext _deliveryContext;
 
@@ -19,7 +19,7 @@ namespace DeliveryCafe.API.Repository
 
         public Usuario Insert(Usuario model)
         {
-            if (CheckDuplicityCpf(model.Cpf))
+            if (CheckDuplicity(model.Cpf))
             {
                 return null;
             }
@@ -65,9 +65,10 @@ namespace DeliveryCafe.API.Repository
             return _deliveryContext.Usuarios.SingleOrDefault(u => u.Id == id);
         }
 
-        public bool CheckDuplicityCpf(string cpf)
+
+        public bool CheckDuplicity(string value)
         {
-            var usuario = _deliveryContext.Usuarios.SingleOrDefault(u => u.Cpf == cpf);
+            var usuario = _deliveryContext.Usuarios.SingleOrDefault(u => u.Cpf == value);
             return usuario != null;
         }
     }

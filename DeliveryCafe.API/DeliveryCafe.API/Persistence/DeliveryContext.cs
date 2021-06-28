@@ -35,23 +35,23 @@ namespace DeliveryCafe.API.Persistence
 
             //Pedido
             modelBuilder.Entity<Pedido>()
-                .HasOne(p => p.CarrinhoCompra)
-                .WithMany(c => c.Pedidos);
+                .HasMany(p => p.CarrinhoCompras)
+                .WithOne(c => c.Pedido);
 
             modelBuilder.Entity<Pedido>()
                 .Property(p => p.Total)
                 .HasColumnType("decimal");
 
-            //Produto
-            modelBuilder.Entity<Produto>()
-                .HasOne(p => p.Compra)
-                .WithMany(c => c.Produtos);
-
             modelBuilder.Entity<Produto>()
                .Property(p => p.Preco)
                .HasColumnType("decimal");
 
-        }
+            modelBuilder.Entity<CarrinhoCompra>()
+                .HasOne(c => c.Produto);
 
+            modelBuilder.Entity<CarrinhoCompra>()
+             .Property(c => c.Total)
+             .HasColumnType("decimal");
+        }
     }
 }

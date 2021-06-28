@@ -14,9 +14,5 @@ namespace DeliveryCafe.API
         Usuario GetById(int id);
         List<Usuario> GetAll();
 
-        bool CheckDuplicityCpf(string cpf);
-
-
-
     }
 }

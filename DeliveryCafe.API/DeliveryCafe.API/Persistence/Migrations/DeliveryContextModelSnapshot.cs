@@ -26,10 +26,29 @@ namespace DeliveryCafe.API.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("IdPedido")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdProduto")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PedidoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Qtd")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PedidoId");
+
+                    b.HasIndex("ProdutoId");
 
                     b.ToTable("CarrinhoCompras");
                 });
@@ -41,22 +60,13 @@ namespace DeliveryCafe.API.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CarrinhoCompraId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DataPedido")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdCompra")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdUsuario")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProdutoId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Total")
@@ -66,10 +76,6 @@ namespace DeliveryCafe.API.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CarrinhoCompraId");
-
-                    b.HasIndex("ProdutoId");
 
                     b.HasIndex("UsuarioId");
 
@@ -83,12 +89,6 @@ namespace DeliveryCafe.API.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CompraId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdCompra")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -101,8 +101,6 @@ namespace DeliveryCafe.API.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompraId");
 
                     b.ToTable("Produtos");
                 });
@@ -173,34 +171,28 @@ namespace DeliveryCafe.API.Persistence.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("DeliveryCafe.API.Models.Pedido", b =>
+            modelBuilder.Entity("DeliveryCafe.API.Models.CarrinhoCompra", b =>
                 {
-                    b.HasOne("DeliveryCafe.API.Models.CarrinhoCompra", "CarrinhoCompra")
-                        .WithMany("Pedidos")
-                        .HasForeignKey("CarrinhoCompraId");
+                    b.HasOne("DeliveryCafe.API.Models.Pedido", "Pedido")
+                        .WithMany("CarrinhoCompras")
+                        .HasForeignKey("PedidoId");
 
                     b.HasOne("DeliveryCafe.API.Models.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("ProdutoId");
 
+                    b.Navigation("Pedido");
+
+                    b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("DeliveryCafe.API.Models.Pedido", b =>
+                {
                     b.HasOne("DeliveryCafe.Models.Usuario", "Usuario")
                         .WithMany("Pedidos")
                         .HasForeignKey("UsuarioId");
 
-                    b.Navigation("CarrinhoCompra");
-
-                    b.Navigation("Produto");
-
                     b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("DeliveryCafe.API.Models.Produto", b =>
-                {
-                    b.HasOne("DeliveryCafe.API.Models.CarrinhoCompra", "Compra")
-                        .WithMany("Produtos")
-                        .HasForeignKey("CompraId");
-
-                    b.Navigation("Compra");
                 });
 
             modelBuilder.Entity("DeliveryCafe.Models.Endereco", b =>
@@ -212,11 +204,9 @@ namespace DeliveryCafe.API.Persistence.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("DeliveryCafe.API.Models.CarrinhoCompra", b =>
+            modelBuilder.Entity("DeliveryCafe.API.Models.Pedido", b =>
                 {
-                    b.Navigation("Pedidos");
-
-                    b.Navigation("Produtos");
+                    b.Navigation("CarrinhoCompras");
                 });
 
             modelBuilder.Entity("DeliveryCafe.Models.Usuario", b =>

@@ -17,17 +17,12 @@ namespace DeliveryCafe.API.Repository
         }
         public Pedido Insert(Pedido model)
         {
+            // TODO - corrigir bug
+            var compras = model.CarrinhoCompras.Sum(c => c.Total);
 
-            //var produto = _deliveryContext.Produtos.Where(p => p.Id == model.Id);
-
-            //var pedido = _deliveryContext.Pedidos
-            //    .Include(p => p.CarrinhoCompra)
-            //    .ThenInclude(c => c.Id);
-            //_deliveryContext.Pedidos.Add(model);
-            //_deliveryContext.SaveChanges();
-            //return model;
-
-            throw new NotImplementedException();
+            _deliveryContext.Pedidos.Add(model);
+            _deliveryContext.SaveChanges();
+            return model;           
         }
 
         public bool Update(int id, Pedido model)
