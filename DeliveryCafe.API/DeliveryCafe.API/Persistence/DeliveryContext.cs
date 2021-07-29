@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Persistence
@@ -23,35 +24,7 @@ namespace DeliveryCafe.API.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Usuario
-            modelBuilder.Entity<Usuario>()
-                .HasMany(u => u.Pedidos)
-                .WithOne(p => p.Usuario);
-
-            //Endereço
-            modelBuilder.Entity<Endereco>()
-                .HasOne(e => e.Usuario)
-                .WithMany(u => u.Enderecos);
-
-            //Pedido
-            modelBuilder.Entity<Pedido>()
-                .HasMany(p => p.CarrinhoCompras)
-                .WithOne(c => c.Pedido);
-
-            modelBuilder.Entity<Pedido>()
-                .Property(p => p.Total)
-                .HasColumnType("decimal");
-
-            modelBuilder.Entity<Produto>()
-               .Property(p => p.Preco)
-               .HasColumnType("decimal");
-
-            modelBuilder.Entity<CarrinhoCompra>()
-                .HasOne(c => c.Produto);
-
-            modelBuilder.Entity<CarrinhoCompra>()
-             .Property(c => c.Total)
-             .HasColumnType("decimal");
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
