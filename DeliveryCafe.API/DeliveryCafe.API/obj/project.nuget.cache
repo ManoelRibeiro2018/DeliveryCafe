@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "ulkFwpWo5uJHq0JjGdjRNGSW6ApxN5PAPP2X7Rayn3NqqUJvLeB76stcZfSt+9JdYqz5jLotd9nDqIo3EAPtUQ==",
+  "dgSpecHash": "E8lsoxVCuxFxdbim/9yuB/DQV3+NCdkLyizM6I893nE6L/dDSoyzWeOTw3bQnmMhwI9pw1Bp4qQDpPQPtYD5uw==",
   "success": true,
   "projectFilePath": "C:\\Users\\manoel.ribeiro.neto\\Desktop\\delivery\\DeliveryCafe.API\\DeliveryCafe.API\\DeliveryCafe.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\fluentvalidation\\10.3.0\\fluentvalidation.10.3.0.nupkg.sha512",
+    "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.0\\fluentvalidation.aspnetcore.10.3.0.nupkg.sha512",
+    "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.0\\fluentvalidation.dependencyinjectionextensions.10.3.0.nupkg.sha512",
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\manoel.ribeiro.neto\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

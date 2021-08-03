@@ -39,11 +39,12 @@ namespace DeliveryCafe.API.Controllers
         [HttpPost]
         public IActionResult Insert([FromBody] UsuarioDTO model)
         {
-            var usuario = _context.Insert(model);
-            if (usuario == null)
+            if (!ModelState.IsValid)
             {
-                return NoContent();
+                var mensage = ModelState.SelectMany(erro => erro.Value.Errors).Select(mensage => mensage.ErrorMessage);
+                return BadRequest(mensage);
             }
+            var usuario = _context.Insert(model);
 
             return CreatedAtAction(
                 nameof(GetById),
@@ -54,6 +55,10 @@ namespace DeliveryCafe.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             var usuario = _context.Delete(id);
             if (!usuario)
             {

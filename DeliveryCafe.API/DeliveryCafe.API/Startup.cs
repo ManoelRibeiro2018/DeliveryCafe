@@ -3,6 +3,8 @@ using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Persistence;
 using DeliveryCafe.API.Repository;
 using DeliveryCafe.API.Services;
+using DeliveryCafe.API.Validator;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +29,8 @@ namespace DeliveryCafe.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UsuarioValidator>(lifetime: ServiceLifetime.Scoped));
             services.AddScoped<IUsuarioInterface, UsuarioRepository>();
             services.AddScoped<IEnderecoInterface, EnderecoRepository>();
             services.AddScoped<IProdutoInterface, ProdutoRepository>();
