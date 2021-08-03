@@ -39,11 +39,7 @@ namespace DeliveryCafe.API.Controllers
         [HttpPost]
         public IActionResult Insert([FromBody] UsuarioDTO model)
         {
-            if (!ModelState.IsValid)
-            {
-                var mensage = ModelState.SelectMany(erro => erro.Value.Errors).Select(mensage => mensage.ErrorMessage);
-                return BadRequest(mensage);
-            }
+          
             var usuario = _context.Insert(model);
 
             return CreatedAtAction(

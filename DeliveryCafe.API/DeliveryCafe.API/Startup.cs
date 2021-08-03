@@ -1,3 +1,4 @@
+using DeliveryCafe.API.Filters;
 using DeliveryCafe.API.Interface.Domain;
 using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Persistence;
@@ -29,7 +30,7 @@ namespace DeliveryCafe.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers()
+            services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UsuarioValidator>(lifetime: ServiceLifetime.Scoped));
             services.AddScoped<IUsuarioInterface, UsuarioRepository>();
             services.AddScoped<IEnderecoInterface, EnderecoRepository>();
