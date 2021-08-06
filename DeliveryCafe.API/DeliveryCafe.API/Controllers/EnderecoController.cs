@@ -40,11 +40,7 @@ namespace DeliveryCafe.API.Controllers
         public IActionResult Insert([FromBody] EnderecoDTO model)
         {
             var endereco = _enderecoDTOInterface.Insert(model);
-            if (endereco == null)
-            {
-                return NoContent();
-            }
-
+         
             return CreatedAtAction(
                 nameof(GetById),
                 new { endereco.Id },
