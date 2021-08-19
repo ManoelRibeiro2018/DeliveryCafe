@@ -21,10 +21,6 @@ namespace DeliveryCafe.API.Services
         }
         public EnderecoDTO Insert(EnderecoDTO model)
         {
-            if (model == null)
-            {
-                return null;
-            }
             var endereco = _mapper.Map<Endereco>(model);
             var enderecoRetorno = _enderecoContext.Insert(endereco);
             return _mapper.Map<EnderecoDTO>(enderecoRetorno);
