@@ -1,10 +1,14 @@
+using DeliveryCafe.API.Especification;
 using DeliveryCafe.API.Filters;
 using DeliveryCafe.API.Interface.Domain;
 using DeliveryCafe.API.Interface.DTO;
+using DeliveryCafe.API.Interface.Especification;
+using DeliveryCafe.API.Models;
 using DeliveryCafe.API.Persistence;
 using DeliveryCafe.API.Repository;
 using DeliveryCafe.API.Services;
 using DeliveryCafe.API.Validator;
+using DeliveryCafe.Models;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +43,7 @@ namespace DeliveryCafe.API
             services.AddScoped<IUsuarioDTOInterface, UsuarioService>();
             services.AddScoped<IEnderecoDTOInterface, EnderecoService>();
             services.AddScoped<IProdutoDTOInterface, ProdutoService>();
+            services.AddScoped<ISpecification<EnderecoDTO>, EnderecoEspecification>();
             services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>

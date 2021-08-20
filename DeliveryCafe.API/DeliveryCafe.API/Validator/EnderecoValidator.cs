@@ -1,4 +1,6 @@
-﻿using DeliveryCafe.API.Models;
+﻿using DeliveryCafe.API.Interface.Especification;
+using DeliveryCafe.API.Models;
+using DeliveryCafe.Models;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -9,8 +11,16 @@ namespace DeliveryCafe.API.Validator
 {
     public class EnderecoValidator : AbstractValidator<EnderecoDTO>
     {
-        public EnderecoValidator()
+        private readonly ISpecification<EnderecoDTO> _specification;
+
+        public EnderecoValidator(ISpecification<EnderecoDTO> specification)
         {
+            _specification = specification;
+
+            RuleFor(e => e)
+                .Must(VerifyExist)
+                .WithMessage("Endereço já cadastrado para o usuário");
+
             RuleFor(e => e.IdUsuario)
                 .NotNull()
                 .NotEmpty()
@@ -30,6 +40,12 @@ namespace DeliveryCafe.API.Validator
                 .NotNull()
                 .NotEmpty()
                 .WithMessage("Necessário informar o bairro");
+          
+        }
+
+        private bool VerifyExist(EnderecoDTO enderecoDTO)
+        {
+            return _specification.IsSatisfiedBy(enderecoDTO);
         }
     }
 }
