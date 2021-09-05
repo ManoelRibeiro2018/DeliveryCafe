@@ -1,10 +1,12 @@
 ﻿using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryCafe.API.Controllers
 {
     [Route("api/usuarios")]
+    [Authorize]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioService _context;
@@ -14,6 +16,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult Get()
         {
             var usuarios = _context.GetAll();
@@ -21,6 +24,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult GetById(int id)
         {
             var usuario = _context.GetById(id);
@@ -32,15 +36,16 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Insert([FromBody] UsuarioDTO model)
-        {
-          
+        {          
             var usuario = _context.Insert(model);
 
             return StatusCode(201, usuario);
         }
 
         [HttpDelete("{id}")]
+        [AllowAnonymous]
         public IActionResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -56,6 +61,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public IActionResult Update(int id, [FromBody] UsuarioDTO model)
         {
             var usuario = _context.Update(id, model);
@@ -67,6 +73,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpPut("Login")]
+        [AllowAnonymous]
         public IActionResult Login(string email, string role)
         {
           var login =   _context.Login(email, role);

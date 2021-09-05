@@ -35,7 +35,6 @@ namespace DeliveryCafe.API.Controllers
             return Ok(endereco);
         }
 
-
         [HttpPost]
         public IActionResult Insert([FromBody] EnderecoDTO model)
         {

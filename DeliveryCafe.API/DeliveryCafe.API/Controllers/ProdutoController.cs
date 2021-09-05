@@ -1,5 +1,6 @@
 ﻿using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Controllers
 {
+    [Authorize]
     [Route("api/produtos")]
     public class ProdutoController: Controller
     {
@@ -18,6 +20,7 @@ namespace DeliveryCafe.API.Controllers
         }
         
         [HttpGet("{id}")]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult GetById(int id)
         {
             var produto = _produtoDTOInterface.GetById(id);
@@ -29,6 +32,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult GetAll()
         {
             var produtos = _produtoDTOInterface.GetAll();
@@ -41,6 +45,7 @@ namespace DeliveryCafe.API.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult Insert([FromBody] ProdutoDTO model)
         {
             var produto = _produtoDTOInterface.Insert(model);
@@ -53,6 +58,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult Update(int id, [FromBody] ProdutoDTO model)
         {
             var produto = _produtoDTOInterface.Update(id, model);
@@ -64,6 +70,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpDelete("id")]
+        [Authorize(Roles = "Funcionario")]
         public IActionResult Delete(int id)
         {
             var produto = _produtoDTOInterface.Delete(id);

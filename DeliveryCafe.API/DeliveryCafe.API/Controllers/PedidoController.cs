@@ -1,10 +1,12 @@
 ﻿using DeliveryCafe.API.Interface.Domain;
 using DeliveryCafe.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryCafe.API.Controllers
 {
     [Route("api/pedidos")]
+    [Authorize]
     public class PedidoController: Controller
     {
         private readonly IPedidoInterface _pedidoInterface;
@@ -15,6 +17,7 @@ namespace DeliveryCafe.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Cliente, Funcionario")]
         public IActionResult Post([FromBody] Pedido model)
         {
             var pedido = _pedidoInterface.Insert(model);
