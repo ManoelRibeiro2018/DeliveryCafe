@@ -15,6 +15,10 @@ namespace DeliveryCafe.API.Persistence.Configuration.Project
             builder
                 .HasMany(u => u.Pedidos)
                 .WithOne(p => p.Usuario);
+
+            builder
+                .HasMany(u => u.Enderecos)
+                .WithOne();
         }
     }
 }

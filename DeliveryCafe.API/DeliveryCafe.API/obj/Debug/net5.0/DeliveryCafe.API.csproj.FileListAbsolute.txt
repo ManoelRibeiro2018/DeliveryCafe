@@ -64,3 +64,4 @@ C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\obj\Debug\net5.0\DeliveryCafe.API.csprojAssemblyReference.cache
+C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\obj\Debug\net5.0\DeliveryCafe.API.csproj.AssemblyReference.cache

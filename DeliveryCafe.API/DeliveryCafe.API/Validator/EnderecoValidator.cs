@@ -1,4 +1,5 @@
-﻿using DeliveryCafe.API.Interface.Especification;
+﻿using DeliveryCafe.API.Especification;
+using DeliveryCafe.API.Interface.Especification;
 using DeliveryCafe.API.Models;
 using DeliveryCafe.Models;
 using FluentValidation;
@@ -12,7 +13,6 @@ namespace DeliveryCafe.API.Validator
     public class EnderecoValidator : AbstractValidator<EnderecoDTO>
     {
         private readonly ISpecification<EnderecoDTO> _specification;
-
         public EnderecoValidator(ISpecification<EnderecoDTO> specification)
         {
             _specification = specification;
@@ -21,10 +21,9 @@ namespace DeliveryCafe.API.Validator
                 .Must(VerifyExist)
                 .WithMessage("Endereço já cadastrado para o usuário");
 
-            RuleFor(e => e.IdUsuario)
-                .NotNull()
-                .NotEmpty()
-                .WithMessage("Necessário informar um usuário");
+            RuleFor(e => e)
+                .Must(VerifExistUser)
+                .WithMessage("Usuário inválido");
 
             RuleFor(e => e.CEP)
                 .NotNull()
@@ -45,7 +44,12 @@ namespace DeliveryCafe.API.Validator
 
         private bool VerifyExist(EnderecoDTO enderecoDTO)
         {
-            return _specification.IsSatisfiedBy(enderecoDTO);
+            return !_specification.IsSatisfiedBy(enderecoDTO);
+        }
+
+        private bool VerifExistUser(EnderecoDTO enderecoDTO)
+        {
+            return _specification.VerifyExistEntity(enderecoDTO) ;
         }
     }
 }

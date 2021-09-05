@@ -8,5 +8,6 @@ namespace DeliveryCafe.API.Interface.Especification
     public interface ISpecification<T>
     {
         bool IsSatisfiedBy(T Entity);
+        bool VerifyExistEntity(T Entity);
     }
 }

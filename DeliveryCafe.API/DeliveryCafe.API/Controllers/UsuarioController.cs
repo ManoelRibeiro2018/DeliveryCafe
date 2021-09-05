@@ -1,11 +1,6 @@
 ﻿using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Models;
-using DeliveryCafe.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Controllers
 {
@@ -42,10 +37,7 @@ namespace DeliveryCafe.API.Controllers
           
             var usuario = _context.Insert(model);
 
-            return CreatedAtAction(
-                nameof(GetById),
-                new { usuario.Id },
-                usuario);
+            return StatusCode(201, usuario);
         }
 
         [HttpDelete("{id}")]

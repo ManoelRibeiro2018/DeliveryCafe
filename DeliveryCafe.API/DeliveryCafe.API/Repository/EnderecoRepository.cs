@@ -58,13 +58,9 @@ namespace DeliveryCafe.API.Repository
             return  _context.Enderecos.ToList();
             
         }
-   
-
-
-
         public bool CheckDuplicity(Endereco value)
         {
-          return   _context.Enderecos.SingleOrDefault(e => e.IdUsuario == value.Id && e.CEP == value.CEP) != null;
+          return   _context.Enderecos.FirstOrDefault(e => e.IdUsuario == value.Id && e.CEP == value.CEP) != null;
         }
 
     }
