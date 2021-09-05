@@ -66,7 +66,7 @@ namespace DeliveryCafe.API.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPut("Login")]
         public IActionResult Login(string email, string role)
         {
           var login =   _context.Login(email, role);

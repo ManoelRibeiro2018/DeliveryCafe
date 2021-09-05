@@ -13,6 +13,6 @@ namespace DeliveryCafe.API.Interface.DTO
         bool Delete(int id);
         UsuarioDTO GetById(int id);
         List<UsuarioDTO> GetAll();
-        string Login(string email, string role);
+        string Login(string email, string senha);
     }
 }

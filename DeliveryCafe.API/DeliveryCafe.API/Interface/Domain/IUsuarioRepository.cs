@@ -13,6 +13,7 @@ namespace DeliveryCafe.API
         bool Delete(int id);
         Usuario GetById(int id);
         List<Usuario> GetAll();
+        Usuario GetUsuarioByEmailAndPassword(string email, string senha);
 
     }
 }

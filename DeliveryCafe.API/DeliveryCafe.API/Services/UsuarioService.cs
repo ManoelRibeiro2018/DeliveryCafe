@@ -78,9 +78,18 @@ namespace DeliveryCafe.API.Services
             return usuarioDTO;
         }
 
-        public string Login(string email, string role)
+        public string Login(string email, string senha)
         {
-            throw new NotImplementedException();
+            var senhaHash = _authService.ComputeSha256Hash(senha);
+
+            var user =  _usuarioContext.GetUsuarioByEmailAndPassword(email, senhaHash);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return _authService.GenerateJwtToken(user.Email, user.Role);
         }
     }
 }

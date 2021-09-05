@@ -65,11 +65,15 @@ namespace DeliveryCafe.API.Repository
             return _deliveryContext.Usuarios.SingleOrDefault(u => u.Id == id);
         }
 
-
         public bool CheckDuplicity(string value)
         {
             var usuario = _deliveryContext.Usuarios.SingleOrDefault(u => u.Cpf == value);
             return usuario != null;
+        }
+
+        public Usuario GetUsuarioByEmailAndPassword(string email, string senhaHash)
+        {
+            return _deliveryContext.Usuarios.SingleOrDefault(u => u.Email == email && u.Senha == senhaHash);
         }
     }
 }
