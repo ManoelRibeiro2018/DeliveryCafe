@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DeliveryCafe.API.Interface.Auth;
 using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Models;
 using DeliveryCafe.Models;
@@ -11,12 +12,15 @@ namespace DeliveryCafe.API.Services
 {
     public class UsuarioService : IUsuarioService
     {
-        private readonly IUsuarioInterface _usuarioContext;
+        private readonly IUsuarioRepository _usuarioContext;
         private readonly IMapper _mapper;
-        public UsuarioService(IUsuarioInterface usuario, IMapper mapper)
+        public IAuthService _authService;
+
+        public UsuarioService(IUsuarioRepository usuario, IMapper mapper, IAuthService authService)
         {
             _usuarioContext = usuario;
             _mapper = mapper;
+            _authService = authService;
         }
 
         public UsuarioDTO Insert(UsuarioDTO model)
@@ -25,7 +29,11 @@ namespace DeliveryCafe.API.Services
             {
                 return null;
             }
+
+            var senhaHash = _authService.ComputeSha256Hash(model.Senha);
+
             var usuario = _mapper.Map<Usuario>(model);
+            usuario.Senha = senhaHash;
             var usuarioDTO = _usuarioContext.Insert(usuario);
             return _mapper.Map<UsuarioDTO>(usuarioDTO);
 

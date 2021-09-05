@@ -9,10 +9,10 @@ namespace DeliveryCafe.API.Especification
     public class EnderecoEspecification : ISpecification<EnderecoDTO>
     {
         private readonly IRepositoryGenerics<Endereco> _enderecoRepository;
-        private readonly IUsuarioInterface  _usuarioInterface;
+        private readonly IUsuarioRepository  _usuarioInterface;
         private readonly IMapper _mapper;
 
-        public EnderecoEspecification(IRepositoryGenerics<Endereco> enderecoRepository, IMapper mapper, IUsuarioInterface usuarioInterface)
+        public EnderecoEspecification(IRepositoryGenerics<Endereco> enderecoRepository, IMapper mapper, IUsuarioRepository usuarioInterface)
         {
             _enderecoRepository = enderecoRepository;
             _mapper = mapper;

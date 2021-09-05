@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Repository
 {
-    public class UsuarioRepository : IUsuarioInterface, IRepositoryGenerics<String>
+    public class UsuarioRepository : IUsuarioRepository, IRepositoryGenerics<String>
     {
         private readonly DeliveryContext _deliveryContext;
 

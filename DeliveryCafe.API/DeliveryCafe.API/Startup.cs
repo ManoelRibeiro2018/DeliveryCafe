@@ -41,7 +41,7 @@ namespace DeliveryCafe.API
             services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UsuarioValidator>(lifetime: ServiceLifetime.Scoped));
            
-            services.AddScoped<IUsuarioInterface, UsuarioRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IEnderecoInterface, EnderecoRepository>();
             services.AddScoped<IProdutoInterface, ProdutoRepository>();
             services.AddScoped<IPedidoInterface, PedidoRepository>();

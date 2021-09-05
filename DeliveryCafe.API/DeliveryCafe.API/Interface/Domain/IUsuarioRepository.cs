@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryCafe.API
 {
-    public interface IUsuarioInterface
+    public interface IUsuarioRepository
     {
         Usuario Insert(Usuario model);
         bool Update(int id, Usuario model);

@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Cryptography;
 
 namespace DeliveryCafe.API.Services
 {
@@ -19,6 +20,25 @@ namespace DeliveryCafe.API.Services
         {
             _configuration = configuration;
         }
+
+        public string ComputeSha256Hash(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                StringBuilder builder = new StringBuilder();
+
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+
+                return builder.ToString();
+
+            }
+        }
+
         public string GenerateJwtToken(string email, string role)
         {
             var issuer = _configuration["Jwt:Issuer"];
