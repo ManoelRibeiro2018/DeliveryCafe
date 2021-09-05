@@ -22,7 +22,6 @@ C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -63,5 +62,5 @@ C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
-C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\obj\Debug\net5.0\DeliveryCafe.API.csprojAssemblyReference.cache
 C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\obj\Debug\net5.0\DeliveryCafe.API.csproj.AssemblyReference.cache
+C:\Users\manoel.ribeiro.neto\Desktop\delivery\DeliveryCafe.API\DeliveryCafe.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

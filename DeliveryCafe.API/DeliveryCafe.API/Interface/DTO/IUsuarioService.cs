@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Interface.DTO
 {
-    public interface IUsuarioDTOInterface
+    public interface IUsuarioService
     {
         UsuarioDTO Insert(UsuarioDTO model);
         bool Update(int id, UsuarioDTO model);
         bool Delete(int id);
         UsuarioDTO GetById(int id);
         List<UsuarioDTO> GetAll();
+        string Login(string email, string role);
     }
 }

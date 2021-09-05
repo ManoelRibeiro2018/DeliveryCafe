@@ -17,6 +17,7 @@ namespace DeliveryCafe.Models
         public string Cpf { get; set; }
         [Required, EmailAddress]
         public string Email { get; set; }
+        public string Role { get; set; }
         [Required, MinLength(4)] 
         public string Senha { get; set; }
 
@@ -24,5 +25,16 @@ namespace DeliveryCafe.Models
         public string ConfirmaSenha { get; set; }
         public List<Endereco> Enderecos{ get; set; }
         public List<Pedido> Pedidos { get; set; }
+
+        public Usuario(string nome, string cpf, string email, string role, string senha)
+        {
+            Nome = nome;
+            Cpf = cpf;
+            Email = email;
+            Role = role;
+            Senha = senha;
+            Enderecos = new List<Endereco>();
+            Pedidos = new List<Pedido>();
+        }
     }
 }

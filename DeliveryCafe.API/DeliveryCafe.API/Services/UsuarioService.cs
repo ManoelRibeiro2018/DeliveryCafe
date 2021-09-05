@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DeliveryCafe.API.Services
 {
-    public class UsuarioService : IUsuarioDTOInterface
+    public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioInterface _usuarioContext;
         private readonly IMapper _mapper;
@@ -68,6 +68,11 @@ namespace DeliveryCafe.API.Services
             var usuario = _usuarioContext.GetById(id);
             var usuarioDTO = _mapper.Map<UsuarioDTO>(usuario);
             return usuarioDTO;
+        }
+
+        public string Login(string email, string role)
+        {
+            throw new NotImplementedException();
         }
     }
 }

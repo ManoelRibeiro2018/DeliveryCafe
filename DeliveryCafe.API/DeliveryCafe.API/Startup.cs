@@ -1,5 +1,6 @@
 using DeliveryCafe.API.Especification;
 using DeliveryCafe.API.Filters;
+using DeliveryCafe.API.Interface.Auth;
 using DeliveryCafe.API.Interface.Domain;
 using DeliveryCafe.API.Interface.DTO;
 using DeliveryCafe.API.Interface.Especification;
@@ -39,15 +40,18 @@ namespace DeliveryCafe.API
 
             services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UsuarioValidator>(lifetime: ServiceLifetime.Scoped));
+           
             services.AddScoped<IUsuarioInterface, UsuarioRepository>();
             services.AddScoped<IEnderecoInterface, EnderecoRepository>();
             services.AddScoped<IProdutoInterface, ProdutoRepository>();
             services.AddScoped<IPedidoInterface, PedidoRepository>();
-            services.AddScoped<IUsuarioDTOInterface, UsuarioService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IEnderecoDTOInterface, EnderecoService>();
             services.AddScoped<IProdutoDTOInterface, ProdutoService>();
             services.AddScoped<IRepositoryGenerics<Endereco>, EnderecoRepository>();
             services.AddScoped<ISpecification<EnderecoDTO>, EnderecoEspecification>();
+            services.AddScoped<IAuthService, AuthService>();
+
             services.AddDbContext<DeliveryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexao")));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>

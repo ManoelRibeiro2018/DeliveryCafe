@@ -39,7 +39,7 @@ namespace DeliveryCafe.API.Services
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var strigToken = tokenHandler.WriteToken(token);
+            var stringToken = tokenHandler.WriteToken(token);
 
             return stringToken;
 

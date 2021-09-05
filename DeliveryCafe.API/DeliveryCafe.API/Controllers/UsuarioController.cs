@@ -7,8 +7,8 @@ namespace DeliveryCafe.API.Controllers
     [Route("api/usuarios")]
     public class UsuarioController : Controller
     {
-        private readonly IUsuarioDTOInterface _context;
-        public UsuarioController(IUsuarioDTOInterface context)
+        private readonly IUsuarioService _context;
+        public UsuarioController(IUsuarioService context)
         {
             _context = context;
         }
@@ -64,6 +64,13 @@ namespace DeliveryCafe.API.Controllers
                 return NotFound();
             }
             return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult Login(string email, string role)
+        {
+          var login =   _context.Login(email, role);
+            return Ok(login);
         }
 
     }
